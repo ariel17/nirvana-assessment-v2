@@ -1,3 +1,4 @@
+import asyncio
 import time
 
 import pytest
@@ -6,7 +7,7 @@ import configs
 from apis import _get_api, get_API1, get_API2, get_API3
 
 
-def test_apis_ok():
+async def test_apis_ok():
     for (f, member_id, expected) in (
             (get_API1, 1, '{"deductible": 1000, "stop_loss": 10000, "oop_max": 5000}'),
             (get_API2, 1, '{"deductible": 1200, "stop_loss": 13000, "oop_max": 6000}'),
@@ -19,6 +20,6 @@ def test_apis_ok():
         assert expected == r.to_json()
 
 
-def test_get_api_error():
+async def test_get_api_error():
     with pytest.raises(Exception):
         await _get_api(True, 0, 0, 0, 0)

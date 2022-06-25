@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def controller():
+async def controller():
     """
     Declares the controller for the only endpoint on the application. It
     validates the member_id parameter presence and value and coalesce diverse
@@ -27,7 +27,7 @@ def controller():
         abort(HTTPStatus.BAD_REQUEST)
 
     try:
-        r = get_coalesced(member_id)
+        r = await get_coalesced(member_id)
     except Exception:
         abort(HTTPStatus.INTERNAL_SERVER_ERROR)
 
