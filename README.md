@@ -23,7 +23,7 @@ $ curl http://localhost:5000/\?member_id\=1 -s | jq .
 }
 ```
 
-# Test execution
+# Test execution
 ```bash
 $ coverage run -m pytest -v
 
