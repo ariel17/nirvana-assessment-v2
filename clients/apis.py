@@ -2,7 +2,7 @@ import json
 import random
 import time
 
-from configs.apis import MAX_RESPONSE_TIME_IN_MS
+import configs
 
 
 class Response(object):
@@ -51,5 +51,5 @@ def get_API3(member_id: int) -> Response:
 
 def _get_api(member_id: int, deductible: int, stop_loss: int, oop_max: int) -> Response:
     random.seed(member_id)
-    time.sleep(random.randint(0, MAX_RESPONSE_TIME_IN_MS) / 1000)
+    time.sleep(random.randint(0, configs.APIS_MAX_RESPONSE_TIME_IN_MS) / 1000)
     return Response(deductible, stop_loss, oop_max)
