@@ -12,7 +12,7 @@ def responses():
 
 def test_strategies(responses):
     for s, expected in (
-        (AverageStrategy(), '{"deductible": 15, "stop_loss": 20, "oop_max": 6}'),
+        (AverageStrategy(), '{"deductible": 15, "stop_loss": 20, "oop_max": 25}'),
         (SumStrategy(), '{"deductible": 45, "stop_loss": 60, "oop_max": 75}'),
     ):
         assert expected == s.coalesce(responses).to_json()

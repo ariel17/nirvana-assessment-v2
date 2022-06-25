@@ -31,7 +31,7 @@ class AverageStrategy(Strategy):
         l = len(responses)
         r.deductible = int(r.deductible / l)
         r.stop_loss = int(r.stop_loss / l)
-        r.oop_max = int(r.stop_loss / l)
+        r.oop_max = int(r.oop_max / l)
         return r
 
     def get_name(self) -> str:
