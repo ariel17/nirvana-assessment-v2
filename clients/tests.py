@@ -16,7 +16,7 @@ def test_apis_ok():
         r = f(member_id)
         execution_time = time.time() - start
         assert execution_time * 1000 <= configs.APIS_MAX_RESPONSE_TIME_IN_MS
-        assert r.to_json() == expected
+        assert expected == r.to_json()
 
 
 def test_get_api_error():
