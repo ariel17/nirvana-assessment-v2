@@ -13,6 +13,11 @@ def client():
 
 class TestController:
 
+    def teardown_class(self):
+        configs.API1_MUST_FAIL = False
+        configs.API2_MUST_FAIL = False
+        configs.API3_MUST_FAIL = False
+
     def test_400_missing_parameter(self, client):
         r = client.get("/")
         assert HTTPStatus.BAD_REQUEST == r.status_code
@@ -36,3 +41,5 @@ class TestController:
             configs.API3_MUST_FAIL = api3_must_fail
             r = client.get("/?member_id=1")
             assert HTTPStatus.INTERNAL_SERVER_ERROR == r.status_code
+
+
